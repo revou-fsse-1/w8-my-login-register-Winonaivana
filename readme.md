@@ -7,7 +7,8 @@ Link: [Assignment](https://w8-assignment.netlify.app/)
 - Login
 - Register
 - Home
-  All in one page
+
+All in one page
 
 ## Details
 
