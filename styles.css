@@ -293,3 +293,12 @@ header {
 .input-box span i {
   color: seagreen;
 }
+
+.wrapper1 table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 600px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
