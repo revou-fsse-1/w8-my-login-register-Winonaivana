@@ -1,10 +1,13 @@
 const wrapper = document.querySelector(".wrapper");
+const wrapper1 = document.querySelector(".wrapper1");
 const loginLink = document.querySelector(".login-link");
 const registerLink = document.querySelector(".register-link");
 const btnPop = document.querySelector(".btnlogin");
+const btnPop1 = document.querySelector(".btnhome");
 const close = document.querySelector(".icon-close");
 const navigation = document.querySelector(".navigation");
 const image = document.querySelector(".image");
+const logo = document.querySelector(".logo");
 var nameError = document.getElementById("name-error");
 var emailError = document.getElementById("email-error");
 var passwordError = document.getElementById("password-error");
@@ -22,13 +25,23 @@ loginLink.addEventListener("click", () => {
 btnPop.addEventListener("click", () => {
   wrapper.classList.add("active-popup");
   navigation.classList.add("active-appear");
-  image.classList.add("active-slide");
+  wrapper1.classList.add("active-popup1");
+});
+
+btnPop1.addEventListener("click", () => {
+  wrapper1.classList.add("active-popup2");
+  navigation.classList.add("active-appear");
+});
+
+logo.addEventListener("click", () => {
+  wrapper1.classList.remove("active-popup2");
+  navigation.classList.remove("active-appear");
 });
 
 close.addEventListener("click", () => {
   wrapper.classList.remove("active-popup");
   navigation.classList.remove("active-appear");
-  image.classList.remove("active-slide");
+  wrapper1.classList.remove("active-popup1");
 });
 
 function validateName() {
@@ -106,4 +119,83 @@ function validatePassword1() {
   }
   passwordError1.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
   return true;
+}
+
+var row = null;
+
+function Submit() {
+  var dataEntered = retrieveData();
+  var readData = readingData(dataEntered);
+  if (dataEntered == false) {
+    msg.innerHTML = "Please Enter Data!";
+  } else {
+    if (row == null) {
+      insert(readData);
+      msg.innerHTML = "Data Inserted";
+    } else {
+      update();
+      msg.innerHTML = "Data Updated";
+    }
+  }
+  document.getElementById("form").reset();
+}
+
+// CREATE
+function retrieveData() {
+  var username = document.getElementById("username").value;
+  var email = document.getElementById("emailInput1").value;
+  var password = document.getElementById("passwordInput1").value;
+
+  var arr = [username, email, password];
+  if (arr.includes("")) {
+    return false;
+  } else {
+    return arr;
+  }
+}
+
+// READ
+function readingData(dataEntered) {
+  var u = localStorage.setItem("username", dataEntered[0]);
+  var e = localStorage.setItem("email", dataEntered[1]);
+  var p = localStorage.setItem("password", dataEntered[2]);
+
+  var u1 = localStorage.getItem("username", u);
+  var e1 = localStorage.getItem("email", e);
+  var p1 = localStorage.getItem("password", p);
+
+  var arr = [u1, e1, p1];
+  return arr;
+}
+
+// INSERT
+function insert(readData) {
+  var row = table.insertRow();
+  row.insertCell(0).innerHTML = readData[0];
+  row.insertCell(1).innerHTML = readData[1];
+  row.insertCell(2).innerHTML = readData[2];
+  row.insertCell(3).innerHTML = `<button onclick = edit(this)>Edit</button>
+    <button onclick = remove(this)>Delete</button>`;
+}
+
+//EDIT
+function edit(td) {
+  row = td.parentElement.parentElement;
+  document.getElementById("username").value = row.cells[0].innerHTML;
+  document.getElementById("emailInput1").value = row.cells[1].innerHTML;
+  document.getElementById("passwordInput1").value = row.cells[2].innerHTML;
+}
+
+// UPDATE
+function update(td) {
+  row.cells[0].innerHTML = document.getElementById("username").value;
+  row.cells[1].innerHTML = document.getElementById("emailInput1").value;
+  row.cells[2].innerHTML = document.getElementById("passwordInput1").value;
+  row = null;
+}
+
+// DELETE
+function remove(td) {
+  row = td.parentElement.parentElement;
+  document.getElementById("table").deleteRow(row.rowIndex);
 }
