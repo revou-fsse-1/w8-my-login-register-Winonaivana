@@ -127,14 +127,14 @@ function Submit() {
   var dataEntered = retrieveData();
   var readData = readingData(dataEntered);
   if (dataEntered == false) {
-    msg.innerHTML = "Please Enter Data!";
+    msg.innerHTML = "";
   } else {
     if (row == null) {
       insert(readData);
-      msg.innerHTML = "Data Inserted";
+      msg.innerHTML = "";
     } else {
       update();
-      msg.innerHTML = "Data Updated";
+      msg.innerHTML = "";
     }
   }
   document.getElementById("form").reset();

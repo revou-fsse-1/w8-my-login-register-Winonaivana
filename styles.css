@@ -295,10 +295,35 @@ header {
 }
 
 .wrapper1 table {
-  border-collapse: collapse;
-  margin: 25px 0;
-  font-size: 0.9em;
-  font-family: sans-serif;
-  min-width: 600px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  min-width: 650px;
+  border-color: transparent;
+}
+
+fieldset {
+  border-radius: 20px;
+}
+
+.wrapper1 table,
+td,
+th {
+  padding: 1rem;
+}
+
+table .col {
+  height: 100%;
+
+  font-weight: bold;
+}
+
+table td {
+  width: 80px;
+}
+
+button {
+  background-color: #faf9f6;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  color: black;
+  font-weight: 600;
 }
