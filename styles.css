@@ -14,6 +14,14 @@ body {
   min-height: 100vh;
   background: #faf9f6;
 }
+.image {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.image.active-appearr {
+  opacity: 1;
+}
 
 header {
   position: fixed;
@@ -127,54 +135,6 @@ header {
   border-bottom-left-radius: 20px;
   cursor: pointer;
   z-index: 1;
-}
-
-.wrapper1 {
-  margin-right: 40px;
-  margin-top: 0px;
-  position: relative;
-  width: 800px;
-  height: 650px;
-  background: transparent;
-  border-top-left-radius: 30px;
-  border-bottom-right-radius: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: right;
-  overflow: hidden;
-  opacity: 0;
-  transition: opacity 0s ease;
-}
-
-.wrapper1.active-popup1 {
-  opacity: 1;
-}
-
-.wrapper1.active-popup1 fieldset {
-  display: none;
-}
-
-.wrapper1.active-popup2 {
-  opacity: 1;
-}
-
-.wrapper1.active-popup2 .image {
-  display: none;
-}
-
-.wrapper1 fieldset {
-  position: relative;
-  width: 600px;
-}
-
-.wrapper1.active-popup1 .msg {
-  display: none;
-}
-
-.wrapper1 .msg {
-  position: relative;
-  margin-right: 50px;
-  margin-top: 10px;
 }
 
 .form-box h2 {

@@ -15,7 +15,7 @@
     <header>
       <h2 class="logo">W.</h2>
       <nav class="navigation">
-        <a href="#" class="btnhome">Home</a>
+        <a href="/table.html">Home</a>
         <a href="#">Story</a>
         <a href="#">Gallery</a>
         <a href="#" class="btnlogin">Login</a>
@@ -24,36 +24,29 @@
 
     <div class="wrapper">
       <span class="icon-close"><ion-icon name="close"></ion-icon></span>
-      <div class="form-boxlogin">
+      <div
+        class="form-boxlogin"
+        id="form-boxlogin"
+        action="/table"
+        method="POST"
+      >
         <h2>Login</h2>
         <form class="formlogin" id="formlogin" action="#">
           <div class="input-box">
             <span class="icon"><ion-icon name="mail"></ion-icon></span>
-            <input
-              type="email"
-              required
-              id="emailInput"
-              onkeyup="validateEmail()"
-            />
+            <input type="email" required id="se" />
             <label>Email</label>
-            <span id="email-error"></span>
           </div>
           <div class="input-box">
             <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
-            <input
-              type="password"
-              required
-              id="passwordInput"
-              onkeyup="validatePassword()"
-            />
+            <input type="password" required id="sp" />
             <label>Password</label>
-            <span id="password-error"></span>
           </div>
           <div class="remember-forgot">
             <label><input type="checkbox" /> Remember me</label>
             <a href="#">Forgot password?</a>
           </div>
-          <button type="submit" value="submit" class="btn" id="btn1">
+          <button type="submit" value="submit" class="btn" onclick="login()">
             Login
           </button>
           <button type="reset" value="reset" class="btn" id="btn">Clear</button>
@@ -67,54 +60,26 @@
         </form>
       </div>
 
-      <div class="form-boxregister">
+      <div class="form-boxregister" id="form-boxregister">
         <h2>Register</h2>
         <form action="#">
           <div class="input-box">
             <span class="icon"><ion-icon name="person"></ion-icon></span>
-            <input
-              type="text"
-              required
-              id="username"
-              onkeyup="validateName()"
-            />
-            <label>Username</label>
-            <span id="name-error"></span>
+            <input id="re" type="email" required />
+            <label>Email</label>
           </div>
           <div class="input-box">
             <span class="icon"><ion-icon name="mail"></ion-icon></span>
-            <input
-              type="email"
-              required
-              id="emailInput1"
-              onkeyup="validateEmail1()"
-            />
-            <label>Email</label>
-            <span id="email-error1"></span>
-          </div>
-          <div class="input-box">
-            <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
-            <input
-              type="password"
-              required
-              id="passwordInput1"
-              onkeyup="validatePassword1()"
-            />
+            <input id="rp" type="password" required />
             <label>Password</label>
-            <span id="password-error1"></span>
           </div>
+
           <div class="remember-forgot">
             <label
               ><input type="checkbox" />Agree to terms and conditions</label
             >
           </div>
-          <button
-            type="submit"
-            value="submit"
-            class="btn"
-            id="btn"
-            onclick="Submit()"
-          >
+          <button type="submit" value="submit" class="btn" onclick="register()">
             Register
           </button>
           <button type="reset" value="reset" class="btn" id="btn">Clear</button>
@@ -127,25 +92,9 @@
       </div>
     </div>
 
-    <div class="wrapper1">
-      <div class="image"><img src="image2.png" alt="" /></div>
+    <div class="image"><img src="image2.png" alt="" /></div>
 
-      <div id="msg" class="msg"></div>
-      <fieldset>
-        <legend>
-          <h2>Data from Local Storage</h2>
-        </legend>
-
-        <table border="2" id="table" class="table">
-          <tr>
-            <td class="col">Username</td>
-            <td class="col">Email</td>
-            <td class="col">Password</td>
-            <td class="col">Action</td>
-          </tr>
-        </table>
-      </fieldset>
-    </div>
+    <div id="lists"></div>
 
     <script src="script.js"></script>
 
