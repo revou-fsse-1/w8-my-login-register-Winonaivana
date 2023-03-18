@@ -87,7 +87,7 @@ function deleteData(i) {
 window.onload = function () {
   let storedData = localStorage.getItem("dataData");
   if (storedData !== null) {
-    data = JSON.parse(storedData);
+    dataData = JSON.parse(storedData);
   }
   showData();
 };
