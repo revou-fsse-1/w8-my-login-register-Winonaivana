@@ -60,10 +60,12 @@ function store() {
     alert("Please fill in email");
   } else if (password.length == 0) {
     alert("Please fill in password");
+  } else if (!email.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)) {
+    alert("Enter a valid email");
   } else if (email.length == 0 && password.length == 0) {
     alert("Please fill in email and password");
-  } else if (password.length > 8) {
-    alert("Max of 8");
+  } else if (password.length < 8) {
+    alert("Must be 8");
   } else if (!password.match(numbers)) {
     alert("please add 1 number");
   } else if (!password.match(upperCaseLetters)) {
@@ -94,7 +96,7 @@ function check() {
   if (checkk) {
     alert("You are logged in.");
     localStorage.setItem("email", email);
-    window.location.href = "/table.html";
+    window.location.href = "/table.html?";
   } else {
     alert("Error on login");
   }

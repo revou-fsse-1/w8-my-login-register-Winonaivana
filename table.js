@@ -28,9 +28,9 @@ function checkEmail() {
 
   var email = document.getElementById("ae").value;
   if (email.length == 0) {
-    alert("Please fill in email");
   } else if (email == storedEmail) {
     alert("email already exist");
+  } else if (!email.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)) {
   } else {
     alert("Added");
   }
@@ -60,6 +60,8 @@ function store() {
     alert("Please fill in name");
   } else if (email.length == 0 && name.length == 0) {
     alert("Please fill in email and name");
+  } else if (!email.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)) {
+    alert("Enter a valid email");
   } else if (email == storedEmail) {
     alert("email already exist");
   } else {
