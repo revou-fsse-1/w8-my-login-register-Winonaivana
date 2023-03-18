@@ -41,61 +41,62 @@ close.addEventListener("click", () => {
   image.classList.remove("active-appearr");
 });
 
+const getUserData = localStorage.getItem("userData");
+const userData = JSON.parse(getUserData) || [
+  { email: "win@gmail.com", password: "Win123123" },
+];
+localStorage.setItem("userData", JSON.stringify(userData));
+
 function store() {
   var storedEmail = localStorage.getItem("email");
 
-  var email = document.getElementById("re");
-  var password = document.getElementById("rp");
+  var email = document.getElementById("re").value;
+  var password = document.getElementById("rp").value;
   var lowerCaseLetters = /[a-z]/g;
   var upperCaseLetters = /[A-Z]/g;
   var numbers = /[0-9]/g;
 
-  if (email.value.length == 0) {
+  if (email.length == 0) {
     alert("Please fill in email");
-  } else if (password.value.length == 0) {
+  } else if (password.length == 0) {
     alert("Please fill in password");
-  } else if (email.value.length == 0 && password.value.length == 0) {
+  } else if (email.length == 0 && password.length == 0) {
     alert("Please fill in email and password");
-  } else if (password.value.length > 8) {
+  } else if (password.length > 8) {
     alert("Max of 8");
-  } else if (!password.value.match(numbers)) {
+  } else if (!password.match(numbers)) {
     alert("please add 1 number");
-  } else if (!password.value.match(upperCaseLetters)) {
+  } else if (!password.match(upperCaseLetters)) {
     alert("please add 1 uppercase letter");
-  } else if (!password.value.match(lowerCaseLetters)) {
+  } else if (!password.match(lowerCaseLetters)) {
     alert("please add 1 lowercase letter");
-  } else if (email.value == storedEmail) {
+  } else if (email == storedEmail) {
     alert("email already exist");
   } else {
-    localStorage.setItem("email", email.value);
-    localStorage.setItem("password", password.value);
+    userData.push({
+      email: email,
+      password: password,
+    });
+    localStorage.setItem("userData", JSON.stringify(userData));
     alert("Your account has been created");
+    wrapper.classList.remove("active");
   }
 }
 
 function check() {
-  var storedEmail = localStorage.getItem("email");
-  var storedPassword = localStorage.getItem("password");
+  var email = document.getElementById("se").value;
+  var password = document.getElementById("sp").value;
 
-  var userEmail = document.getElementById("se");
-  var userPassword = document.getElementById("sp");
+  const checkk = userData.find(
+    (a) => a.email === email && a.password === password
+  );
 
-  if (userEmail.value == storedEmail && userPassword.value == storedPassword) {
+  if (checkk) {
     alert("You are logged in.");
+    localStorage.setItem("email", email);
+    window.location.href = "/table.html";
   } else {
     alert("Error on login");
-  }
-}
-
-function bb() {
-  var storedEmail = localStorage.getItem("email");
-
-  var userEmail = document.getElementById("re");
-
-  if (userEmail.value == storedEmail) {
-    alert("Email used");
-  } else {
-    store();
   }
 }
 

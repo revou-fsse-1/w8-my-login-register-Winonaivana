@@ -6,44 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body>
+  <body onload="showData()">
+    <div class="form-add" id="form-add">
+      <h2>Add</h2>
+      <form class="formadd" id="formadd" action="#">
+        <div class="input-box">
+          <span class="icon"><ion-icon name="mail"></ion-icon></span>
+          <input type="email" required id="ae" />
+          <label>Email</label>
+        </div>
+        <div class="input-box">
+          <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+          <input type="text" required id="an" />
+          <label>Name</label>
+        </div>
+        <button class="btn" onclick="add()">Add</button>
+        <button type="reset" value="reset" class="btn" id="btn">Clear</button>
+      </form>
+    </div>
     <div class="container">
       <h1>List of people</h1>
       <table id="table">
         <thead>
           <tr>
+            <th>Name</th>
             <th>Email</th>
-            <th>Password</th>
             <th>Actions</th>
           </tr>
         </thead>
+        <tbody id="lists" class="lists"></tbody>
       </table>
     </div>
-    <script>
-      function bob() {
-        var storedEmail = localStorage.getItem("email");
-        var storedPassword = localStorage.getItem("password");
-
-        var arr = [storedEmail, storedPassword];
-        if (arr.includes("")) {
-          return false;
-        } else {
-          return arr;
-        }
-      }
-
-      var dataEntered = bob();
-
-      function insert(dataEntered) {
-        var table = document.getElementById("table");
-        var i = table.rows.length;
-        var row = table.insertRow(i);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-
-        cell1.innerHTML = readData[0];
-        cell2.innerHTML = readData[1];
-      }
-    </script>
+    <script src="table.js"></script>
   </body>
 </html>
