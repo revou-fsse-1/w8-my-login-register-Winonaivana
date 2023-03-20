@@ -94,9 +94,9 @@ function check() {
   );
 
   if (checkk) {
+    window.location.href = "table.html";
     alert("You are logged in.");
     localStorage.setItem("email", email);
-    window.location.href = "/table.html?";
   } else {
     alert("Error on login");
   }
